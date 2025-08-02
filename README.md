@@ -174,13 +174,13 @@ SOFTWARE.
 
 ---
 
-## Acknowledgements
+## Acknowledgements/Contributions
 
-- [OpenAI](https://openai.com/)
-- [SerpAPI](https://serpapi.com/)
-- [Streamlit](https://streamlit.io/)
-- [python-dotenv](https://github.com/theskumar/python-dotenv)
+- [OpenAI] (https://openai.com/)
+- [SerpAPI] (https://serpapi.com/)
+- [Streamlit] (https://streamlit.io/)
+- [python-dotenv] (https://github.com/theskumar/python-dotenv)
 
 ---
 
-*For any questions, please contact [your-email@example.com].*
+*For any questions, please contact popli.sa@northeastern.edu
