@@ -1,10 +1,29 @@
-# AgenticAI System(ResearchAI Assistant)
+# AgenticAI System (ResearchAI Assistant)
 
 ## Overview
 
 AgenticAI System is a modular, multi-agent research assistant built in Python.  
 It demonstrates agentic AI design principles, including multi-agent orchestration, tool integration, and domain-specific information extraction.  
 The system features a user-friendly Streamlit web interface and can also be run as a CLI.
+
+---
+
+## Learning Objectives
+
+- Understand the architecture of agentic AI systems
+- Implement a controller agent that orchestrates task delegation
+- Integrate both pre-built and custom tools into an agentic workflow
+- Apply reinforcement learning concepts to improve agent performance (future work)
+- Evaluate agentic system effectiveness through metrics and testing
+
+---
+
+## Application Domain
+
+**Domain:** ResearchAI Assistant  
+- Gathers, analyzes, and synthesizes information from the web  
+- Tools for web search, content summarization, and output formatting  
+- Custom tool for domain-specific information extraction
 
 ---
 
@@ -19,13 +38,18 @@ The system features a user-friendly Streamlit web interface and can also be run 
   - OutputFormattingTool
 - **CustomDomainExtractor** for domain-specific information extraction
 - **Extensible architecture** for adding new agents or tools
+- **Memory management** for contextual awareness
+- **Error handling** and fallback mechanisms
+- **Communication protocol** between agents
 
 ---
 
 ## Architecture
 
-<img width="1116" height="611" alt="Agentic AI Diagram" src="https://github.com/user-attachments/assets/f927065f-a8c5-4e0a-bb4d-f9f473caf1e0" />
+<img width="1116" height="611" alt="Agentic AI Diagram" src="https://github.com/user-attachments/assets/dce5e8c9-61d9-449a-ba7b-223b19db7d12" />
 
+
+---
 
 ## File Structure
 
@@ -34,6 +58,7 @@ agentic-system/
 │
 ├── src/
 │   ├── app.py
+│   ├── main.py
 │   ├── controller_agent.py
 │   ├── specialized_agents/
 │   │   ├── research_agent.py
@@ -47,6 +72,41 @@ agentic-system/
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+## APIs, Libraries, and Technologies Used
+
+### APIs
+- **OpenAI API:**  
+  Used for text summarization via GPT-3.5-turbo.  
+  API key stored as `OPENAI_API_KEY` in `.env`.
+- **SerpAPI:**  
+  Used for web search and retrieval of article titles, links, and snippets.  
+  API key stored as `SERPAPI_API_KEY` in `.env`.
+
+### Python Libraries
+- **streamlit:** For the web interface.
+- **requests:** For HTTP requests to SerpAPI.
+- **openai:** For interacting with OpenAI's GPT models.
+- **python-dotenv:** For loading environment variables from `.env`.
+- **os:** For environment variable access.
+- **dotenv:** For loading `.env` file.
+- **Custom modules:**  
+  - `controller_agent.py`: Orchestrates agent interactions.
+  - `specialized_agents/research_agent.py`: Handles research tasks.
+  - `specialized_agents/summarization_agent.py`: Handles summarization tasks.
+  - `tools/web_search_tool.py`: Integrates SerpAPI.
+  - `tools/summarizer_tool.py`: Integrates OpenAI API.
+  - `tools/output_formatting_tool.py`: Formats output for display.
+  - `tools/custom_domain_extractor.py`: Custom tool for extracting domain-specific information.
+
+### Environment Variables
+```
+OPENAI_API_KEY=your-openai-api-key
+SERPAPI_API_KEY=your-serpapi-api-key
+```
+- **Purpose:** Keeps sensitive API keys out of the codebase and version control.
 
 ---
 
@@ -85,7 +145,7 @@ agentic-system/
 - **Summarize text:**  
   Paste any text to get a concise summary.
 
-### CLI (if implemented)
+### CLI (if using `main.py`)
 
 - Follow the prompts to choose between research and summarization.
 
@@ -95,6 +155,9 @@ agentic-system/
 
 ### ControllerAgent
 - Orchestrates tasks and delegates to the appropriate agent.
+- Implements error handling and fallback mechanisms.
+- Maintains a registry of specialized agents.
+- Communication protocol for agent collaboration.
 
 ### ResearchAgent
 - Handles research queries.
@@ -102,6 +165,7 @@ agentic-system/
   - **WebSearchTool:** Fetches search results from SerpAPI.
   - **SummarizerTool:** (Optional) Summarizes results if needed.
   - **CustomDomainExtractor:** Extracts domain-specific information.
+- Maintains context for each query.
 
 ### SummarizationAgent
 - Handles text summarization using SummarizerTool.
@@ -120,15 +184,46 @@ agentic-system/
 - **Inputs:** Raw search results (list of dicts).
 - **Outputs:** Filtered or highlighted information relevant to the chosen domain.
 - **Limitations:** Extraction logic may need tuning for different domains.
+- **Enhancement:** Makes research output more relevant and actionable.
+- **Error Handling:** Handles missing or malformed data gracefully.
+
+---
+
+## Orchestration System
+
+- **Workflow:**  
+  The ControllerAgent receives tasks from the UI and delegates them to the appropriate specialized agent.
+- **Task Execution:**  
+  Sequential execution for research and summarization tasks.
+- **Memory Management:**  
+  Each agent maintains context for improved coherence.
+- **Error Handling:**  
+  Robust error handling for API failures and missing data.
+- **Feedback Loops:**  
+  (Planned) For agent improvement and reinforcement learning.
 
 ---
 
 ## Evaluation
 
-- **Tested with various queries and texts.**
-- **Metrics considered:** Accuracy, relevance, and response time.
-- **Error handling:** Robust to API failures and missing data.
-- **Extensible:** Easily add new agents or tools.
+### Test Cases
+
+- Research queries on various topics (e.g., "best AI models", "Claude vs GPT").
+- Summarization of long and short texts.
+- Edge cases: empty input, API failure, malformed data.
+
+### Metrics
+
+- **Accuracy:** Relevance of search results and summaries.
+- **Efficiency:** Response time for each task.
+- **Reliability:** Robustness to API errors and missing data.
+- **User Experience:** Clarity and helpfulness of output.
+
+### Results
+
+- System meets stated objectives for research and summarization.
+- Handles edge cases and maintains context across interactions.
+- Responsive and user-friendly web interface.
 
 ---
 
@@ -137,6 +232,7 @@ agentic-system/
 - **API quota management:** Handled by using environment variables and error handling.
 - **Result formatting:** Used a dedicated formatting tool for clean UI.
 - **Extensibility:** Modular design for easy addition of new features.
+- **Context management:** Each agent maintains its own memory for coherence.
 
 ---
 
@@ -176,11 +272,11 @@ SOFTWARE.
 
 ## Acknowledgements/Contributions
 
-- [OpenAI] (https://openai.com/)
-- [SerpAPI] (https://serpapi.com/)
-- [Streamlit] (https://streamlit.io/)
-- [python-dotenv] (https://github.com/theskumar/python-dotenv)
+- [OpenAI](https://openai.com/)
+- [SerpAPI](https://serpapi.com/)
+- [Streamlit](https://streamlit.io/)
+- [python-dotenv](https://github.com/theskumar/python-dotenv)
 
 ---
 
-*For any questions, please contact popli.sa@northeastern.edu
+*For any questions, please contact popli.sa@northeastern.edu*
