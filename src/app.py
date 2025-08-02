@@ -7,9 +7,17 @@ from tools.Summarizer_tool import SummarizerTool
 from tools.output_formatting_tool import format_output
 from tools.custom_domain_extractor import CustomDomainExtractor
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+serpapi_api_key = os.getenv("SERPAPI_API_KEY")
+
 # Instantiate tools and agents once
-web_search = WebSearchTool(api_key="9b87a30ced28672585d1d6c894421ccda9778ee0bd84fbf61ce9f46738a83487")
-summarizer = SummarizerTool()
+web_search = WebSearchTool(api_key=serpapi_api_key)
+summarizer = SummarizerTool(api_key=openai_api_key)
 custom_extractor = CustomDomainExtractor()
 
 research_agent = ResearchAgent(tools={
@@ -40,7 +48,7 @@ if task == "Research (web search)":
                 for item in result:
                     st.markdown(f"**Title:** {item.get('title')}")
                     st.markdown(f"[Link]({item.get('link')})")
-                    st.markdown(f"Snippet:** {item.get('snippet')}")
+                    st.markdown(f"Snippet: {item.get('snippet')}")
                     st.markdown("---")
             else:
                 st.write(result)

@@ -15,11 +15,11 @@ class ResearchAgent:
         return task.get("type") == "research"
 
     def handle_task(self, task):
-        query = task.get("query")
-        info = self.gather_information(query)
-        analysis = self.analyze_information(info)
-        self.maintain_contextual_awareness({"last_query": query, "last_result": analysis})
-        return analysis
+      query = task.get("query")
+      info = self.gather_information(query)
+      print("DEBUG: info from web search:", info)
+      self.maintain_contextual_awareness({"last_query": query, "last_result": info})
+      return info  # Return the raw search results
 
     def gather_information(self, query):
         # Use web search tool if available
