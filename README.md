@@ -1,4 +1,4 @@
-# AgenticAI System
+# AgenticAI System(ResearchAI Assistant)
 
 ## Overview
 
