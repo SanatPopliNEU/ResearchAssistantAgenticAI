@@ -147,6 +147,34 @@ The Agentic System demonstrates a robust implementation of multi-agent orchestra
 4. AI tools: Claude, Chatgpt, copilot
 5. Chatgpt Chatlink: https://chatgpt.com/c/688b71d8-2888-8331-b989-d209512b8255
 
+## Project Structure
+agentic-system
+├── src
+│   ├── controller_agent.py          # Implements the ControllerAgent class for workflow orchestration
+│   ├── specialized_agents            # Contains specialized agents for specific tasks
+│   │   ├── research_agent.py         # Gathers and analyzes information
+│   │   └── summarization_agent.py    # Summarizes content
+│   ├── tools                         # Various tools for data handling and processing
+│   │   ├── web_search_tool.py        # Retrieves information from the internet
+│   │   ├── data_processing_tool.py    # Transforms and cleans data
+│   │   ├── output_formatting_tool.py  # Formats output data for presentation
+│   │   └── custom_domain_extractor.py # Extracts domain-specific information
+│   ├── orchestration                 # Coordinates agent interactions
+│   │   └── workflow.py               # Defines the workflow for task execution
+│   ├── memory                        # Manages contextual awareness
+│   │   └── memory_manager.py         # Implements memory management functions
+│   └── main.py                       # Entry point for the application
+├── tests                             # Contains unit tests for the system
+│   ├── test_controller_agent.py      # Tests for the controller agent
+│   ├── test_specialized_agents.py    # Tests for specialized agents
+│   ├── test_tools.py                 # Tests for the various tools
+│   └── test_workflow.py              # Tests for the workflow implementation
+├── requirements.txt                  # Lists project dependencies
+├── README.md                         # Documentation for the project
+└── docs                              # Additional documentation
+    ├── architecture_diagram.png      # System architecture diagram
+    └── technical_report.pdf 
+
 # License
 
 MIT License
