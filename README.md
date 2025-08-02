@@ -272,10 +272,10 @@ SOFTWARE.
 
 ## Acknowledgements/Contributions
 
-- [OpenAI](https://openai.com/)
-- [SerpAPI](https://serpapi.com/)
-- [Streamlit](https://streamlit.io/)
-- [python-dotenv](https://github.com/theskumar/python-dotenv)
+- [OpenAI] (https://openai.com/)
+- [SerpAPI] (https://serpapi.com/)
+- [Streamlit] (https://streamlit.io/)
+- [python-dotenv] (https://github.com/theskumar/python-dotenv)
 
 ---
 
