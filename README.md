@@ -121,14 +121,14 @@ Agent-tool integration failures	Used BaseTool typing and validated tool schemas
 Tool output inconsistency	Implemented post-processing and structured return formats
 Context loss between agents	Introduced lightweight memory system to retain intermediate data
 
-#9. Performance Analysis
+# 9. Performance Analysis
 Metric	Description
 Execution Time	Avg. 4.3s per complete research → summary cycle
 Accuracy	Manually verified correctness ~85% (subjective)
 Tool Success Rate	100% for built-in tools with valid input
 Error Handling	Graceful failure fallback observed in all tests
 
-#10. Future Improvements
+## 10. Future Improvements
 Add GUI layer for user task input (Streamlit or Gradio)
 
 Extend memory to support long-term project history
@@ -140,3 +140,5 @@ Enhance domain extractor with NLP models (spaCy, Transformers)
 #11. Conclusion
 The Agentic System demonstrates a robust implementation of multi-agent orchestration using Python, integrating built-in and custom tools. It shows strong potential for scalability, adaptability across domains, and practical use in content summarization and web intelligence gathering.
 
+## Attributes/Contribution
+1. OpenChatAPI
